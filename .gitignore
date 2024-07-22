@@ -44,4 +44,8 @@ typings/
 .npm/
 
 # Optional eslint cache
-.eslintcache
+.eslintcach
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
