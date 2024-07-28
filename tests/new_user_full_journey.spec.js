@@ -1,7 +1,12 @@
 import { test, expect } from "@playwright/test"
+import { v4 as uuidv4 } from 'uuid';
 import { ProductPage } from "../page-objects/ProductPage"
 import { Navigation } from "../page-objects/Navigation"
 import { Checkout } from "../page-objects/Checkout"
+import { Login } from "../page-objects/Login"
+import { RegisterPage } from "../page-objects/RegisterPage"
+import { DeliveryDetails } from "../page-objects/DeliveryDetails"
+import { userAddress } from "../data/deliveryDetails.js"
 
 test.only('new user full end-to-end journey', async ({ page }) => {
     
@@ -15,4 +20,15 @@ test.only('new user full end-to-end journey', async ({ page }) => {
     await navigation.goToCheckOut()
     const checkout = new Checkout(page)
     await checkout.removeCheapestProduct()
+    await checkout.goToCheckoutPage()
+    const login = new Login(page)
+    await login.register()
+
+    const register = new RegisterPage(page)
+    const email = uuidv4()
+    const password = uuidv4()
+    await register.signUpAsNewUser(email, password)
+
+    const deliveryDetails = new DeliveryDetails(page)
+    await deliveryDetails.fillDetails(userAddress)
 })
