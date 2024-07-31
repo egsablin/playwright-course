@@ -10,7 +10,7 @@ import { userAddress } from "../data/deliveryDetails.js"
 import { PaymentPage } from "../page-objects/PaymentPage"
 import { paymentDetails } from "../data/paymentDetails.js"
 
-test.only('new user full end-to-end journey', async ({ page }) => {
+test('new user full end-to-end journey', async ({ page }) => {
     
     const productPage = new ProductPage(page)
     await productPage.visit()
