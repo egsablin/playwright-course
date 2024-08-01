@@ -2,6 +2,10 @@
 
 website/
 
+# Environments values
+
+.env
+
 # Mac OS X files
 
 *.DS_Store
