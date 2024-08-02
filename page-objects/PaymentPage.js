@@ -57,6 +57,6 @@ export class PaymentPage {
         await this.paymentButton.waitFor()
         await this.paymentButton.click()
         await this.page.waitForURL(/\/thank-you/)
-        expect(this.confirmation).toBeVisible()
+        await this.confirmation.waitFor()
     }
 }
